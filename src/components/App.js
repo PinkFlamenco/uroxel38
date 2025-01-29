@@ -57,7 +57,7 @@ const Hero = () => (
         <div className="relative">
           <div className="absolute -inset-1 bg-gradient-to-r from-orange-400 to-orange-600 rounded-lg blur opacity-30"></div>
           <img 
-            src="/api/placeholder/400/400"
+            src="product.png"
             alt="Uroxel - Innovación Natural" 
             className="relative mx-auto max-w-sm rounded-lg shadow-2xl"
           />
@@ -298,13 +298,13 @@ const Footer = () => {
   const [activeModal, setActiveModal] = useState(null);
 
   const footerLinks = [
-    { id: 'privacy', title: 'Política de Privacidad', content: 'En Uroxel, protegemos su privacidad con los más altos estándares de seguridad digital...' },
-    { id: 'terms', title: 'Términos de Servicio', content: 'Al utilizar Uroxel, usted acepta nuestros términos de servicio profesional...' },
+    { id: 'privacy', title: 'Política de Privacidad', content: 'En Uroxel, valoramos su privacidad y nos dedicamos a salvaguardarla. Esta política detalla la manera en que recopilamos y utilizamos su información personal. Información que recopilamos: Datos de contacto (nombre, número de teléfono, dirección de correo electrónico) Detalles de pedidos Información de navegación Sus datos están protegidos con nosotros y no serán compartidos con terceros sin su autorización. Si desea más información o tiene preguntas sobre nuestra política de privacidad, no dude en comunicarse con nosotros a través de info@uroxe.netlify.app'},
+    { id: 'terms', title: 'Términos de Servicio', content: 'Al acceder a nuestro sitio web y realizar compras, usted acepta los siguientes términos: Productos y Precios Todos los precios están expresados en Pesos Mexicanos (MXN). Nos reservamos el derecho de realizar modificaciones en los precios. Las imágenes de los productos son meramente ilustrativas. Pedidos La confirmación de un pedido no garantiza su disponibilidad. Nos reservamos el derecho de rechazar cualquier pedido. Los plazos de entrega son estimados y pueden variar. Uso del Sitio El contenido del sitio es propiedad de Uroxel. Queda prohibido el uso comercial del contenido sin nuestra autorización. Nos reservamos el derecho de realizar modificaciones en el sitio web.' },
     { id: 'returns', title: 'Garantía de Satisfacción', content: 'Ofrecemos una garantía de satisfacción de 30 días con devolución completa...' },
     { id: 'shipping', title: 'Envío Premium', content: 'Envío express a todo México en 48-72 horas. Seguimiento en tiempo real disponible...' },
-    { id: 'cookies', title: 'Política de Cookies', content: 'Utilizamos tecnología avanzada de cookies para optimizar su experiencia...' },
+    { id: 'cookies', title: 'Política de Cookies', content: 'En nuestro sitio web, utilizamos cookies para optimizar su experiencia: Tipos de Cookies Cookies esenciales: Indispensables para el funcionamiento del sitio. Cookies de rendimiento: Utilizadas para analizar el uso del sitio. Cookies de preferencias: Sirven para recordar sus elecciones y configuraciones. Finalidad Mejorar la navegación en el sitio. Recordar sus preferencias y configuraciones. Realizar análisis sobre el uso del sitio web. Control de Cookies Tiene la opción de desactivar las cookies a través de la configuración de su navegador. Tenga en cuenta que algunas funcionalidades pueden verse afectadas. Las cookies esenciales no pueden ser desactivadas, ya que son necesarias para el funcionamiento básico del sitio.' },
     { id: 'disclaimer', title: 'Información Legal', content: 'Uroxel es un suplemento premium diseñado para complementar un estilo de vida saludable...' },
-    { id: 'contacts', title: 'Centro de Atención', content: 'Email: soporte@uroxel.mx\nWhatsApp: +52 5512345678\nHorario: Lun-Vie 9:00-18:00' },
+    { id: 'contacts', title: 'Centro de Atención', content: 'Email: support@uroxelmax.netlify.app\nWhatsApp: +52 1512345671\nHorario: Lun-Vie 9:00-18:00' },
     { id: 'about', title: 'Nuestra Misión', content: 'En Uroxel, nos dedicamos a la innovación en bienestar natural con tecnología de vanguardia...' }
   ];
 
