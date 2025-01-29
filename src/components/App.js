@@ -1,140 +1,122 @@
 import React, { useState } from 'react';
 import { Star } from 'lucide-react';
-import { 
-  AlertDialog, 
-  AlertDialogContent, 
-  AlertDialogHeader, 
-  AlertDialogTitle, 
-  AlertDialogDescription, 
-  AlertDialogAction 
-} from './ui/AlertDialog';
 
-// Компонент Header
+// Modal Component
+const Modal = ({ isOpen, onClose, title, children }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+      <div className="bg-white rounded-2xl max-w-md w-full mx-4">
+        <div className="p-6">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-xl font-bold text-gray-900">{title}</h2>
+            <button
+              onClick={onClose}
+              className="text-gray-500 hover:text-gray-700"
+            >
+              ✕
+            </button>
+          </div>
+          <div className="text-gray-600 whitespace-pre-line">
+            {children}
+          </div>
+          <div className="mt-6 flex justify-end">
+            <button
+              onClick={onClose}
+              className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Header Component
 const Header = () => (
-  <header className="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-6">
+  <header className="bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 text-white py-8">
     <div className="container mx-auto px-4">
-      <h1 className="text-4xl font-bold text-center">Uroxel</h1>
-      <p className="text-xl text-center mt-2">Dulces naturales para tu bienestar diario</p>
+      <h1 className="text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-orange-100">
+        Uroxel
+      </h1>
+      <p className="text-2xl text-center mt-4 font-light">
+        Innovación Natural para Tu Bienestar
+      </p>
     </div>
   </header>
 );
 
-// Компонент Hero
+// Hero Component
 const Hero = () => (
-  <section className="py-16 bg-orange-50">
+  <section className="py-20 bg-gradient-to-b from-orange-50 to-white">
     <div className="container mx-auto px-4 flex flex-wrap items-center">
-      <div className="w-full md:w-1/2 mb-8 md:mb-0">
-        <img 
-          src="https://static.tildacdn.com/tild3836-3761-4166-a231-376631646432/5.png" 
-          alt="Uroxel - Dulces Naturales" 
-          className="mx-auto max-w-sm rounded-lg shadow-lg"
-        />
+      <div className="w-full md:w-1/2 mb-8 md:mb-0 transform hover:scale-105 transition-transform duration-500">
+        <div className="relative">
+          <div className="absolute -inset-1 bg-gradient-to-r from-orange-400 to-orange-600 rounded-lg blur opacity-30"></div>
+          <img 
+            src="/api/placeholder/400/400"
+            alt="Uroxel - Innovación Natural" 
+            className="relative mx-auto max-w-sm rounded-lg shadow-2xl"
+          />
+        </div>
       </div>
       <div className="w-full md:w-1/2 text-center md:text-left">
-        <h2 className="text-3xl font-bold mb-4">¡Descubre el sabor natural del bienestar!</h2>
-        <p className="text-lg mb-6">Deliciosos dulces elaborados con ingredientes naturales seleccionados para tu día a día</p>
-        <div className="text-2xl font-bold text-orange-600 mb-6">$590 MXN</div>
-        <button onClick={() => document.getElementById('orderForm').scrollIntoView({ behavior: 'smooth' })} 
-                className="bg-orange-500 text-white px-8 py-3 rounded-full hover:bg-orange-600 transition-colors">
-          ¡Ordena ahora!
+        <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-orange-800">
+          ¡Descubre el Futuro del Bienestar!
+        </h2>
+        <p className="text-xl mb-8 text-gray-700">
+          Formulación avanzada con tecnología natural para optimizar tu rendimiento diario
+        </p>
+        <div className="text-3xl font-bold text-orange-600 mb-8">$590 MXN</div>
+        <button 
+          onClick={() => document.getElementById('orderForm').scrollIntoView({ behavior: 'smooth' })}
+          className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-10 py-4 rounded-full hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
+        >
+          ¡Obtén el Tuyo Ahora!
         </button>
       </div>
     </div>
   </section>
 );
 
-// Компонент Benefits
-const Benefits = () => (
-  <section className="py-16 bg-white">
-    <div className="container mx-auto px-4">
-      <h2 className="text-3xl font-bold text-center mb-12">Beneficios de Uroxel</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="text-center p-6 rounded-lg shadow-md">
-          <div className="text-orange-500 text-4xl mb-4">🌿</div>
-          <h3 className="text-xl font-bold mb-3">100% Natural</h3>
-          <p>Elaborado con ingredientes naturales de la más alta calidad</p>
-        </div>
-        <div className="text-center p-6 rounded-lg shadow-md">
-          <div className="text-orange-500 text-4xl mb-4">✨</div>
-          <h3 className="text-xl font-bold mb-3">Delicioso Sabor</h3>
-          <p>Una experiencia única que combina sabor y beneficios naturales</p>
-        </div>
-        <div className="text-center p-6 rounded-lg shadow-md">
-          <div className="text-orange-500 text-4xl mb-4">🎯</div>
-          <h3 className="text-xl font-bold mb-3">Bienestar Diario</h3>
-          <p>El complemento perfecto para tu rutina de bienestar</p>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-// Компонент Ingredients
-const Ingredients = () => (
-  <section className="py-16 bg-orange-50">
-    <div className="container mx-auto px-4">
-      <h2 className="text-3xl font-bold text-center mb-12">Ingredientes Naturales</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h3 className="text-xl font-bold mb-3 text-orange-600">Cúrcuma</h3>
-          <p>Especia natural con propiedades antioxidantes</p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h3 className="text-xl font-bold mb-3 text-orange-600">Jengibre</h3>
-          <p>Raíz natural que apoya el bienestar digestivo</p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h3 className="text-xl font-bold mb-3 text-orange-600">Zinc</h3>
-          <p>Mineral esencial para el bienestar general</p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h3 className="text-xl font-bold mb-3 text-orange-600">Arginina</h3>
-          <p>Aminoácido natural para tu vitalidad</p>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-// Компонент Reviews
-const Reviews = () => {
-  const reviews = [
+// Benefits Component
+const Benefits = () => {
+  const benefitsData = [
     {
-      name: "María G.",
-      rating: 4.8,
-      text: "¡Estos dulces son increíbles! Me encanta que sean naturales y su sabor es delicioso."
+      icon: "🌿",
+      title: "Tecnología Natural",
+      description: "Fórmula avanzada con ingredientes bioactivos de última generación"
     },
     {
-      name: "Carlos R.",
-      rating: 5.0,
-      text: "Los mejores dulces naturales que he probado. Los recomiendo totalmente."
+      icon: "⚡",
+      title: "Máximo Rendimiento",
+      description: "Potencia tu energía y vitalidad con nuestra fórmula exclusiva"
     },
     {
-      name: "Ana P.",
-      rating: 4.9,
-      text: "Excelente producto, me ayuda a mantener mi rutina de bienestar de forma deliciosa."
+      icon: "🎯",
+      title: "Resultados Garantizados",
+      description: "Eficacia comprobada para tu bienestar diario"
     }
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Opiniones de Nuestros Clientes</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {reviews.map((review, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className={i < Math.floor(review.rating) ? "text-yellow-400 fill-current" : "text-gray-300"}
-                    size={20}
-                  />
-                ))}
-                <span className="ml-2 text-sm text-gray-600">{review.rating}</span>
-              </div>
-              <p className="mb-4">{review.text}</p>
-              <p className="font-bold">{review.name}</p>
+        <h2 className="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-orange-800">
+          Ventajas Exclusivas
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {benefitsData.map((benefit, index) => (
+            <div 
+              key={index}
+              className="text-center p-8 rounded-xl bg-gradient-to-b from-white to-orange-50 shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300"
+            >
+              <div className="text-5xl mb-6">{benefit.icon}</div>
+              <h3 className="text-2xl font-bold mb-4 text-orange-700">{benefit.title}</h3>
+              <p className="text-gray-600">{benefit.description}</p>
             </div>
           ))}
         </div>
@@ -143,35 +125,137 @@ const Reviews = () => {
   );
 };
 
-// Компонент OrderForm
+// Ingredients Component
+const Ingredients = () => {
+  const ingredientsData = [
+    {
+      title: "Cúrcuma Elite",
+      description: "Potente antioxidante de máxima pureza"
+    },
+    {
+      title: "Jengibre Premium",
+      description: "Extracto concentrado de alta biodisponibilidad"
+    },
+    {
+      title: "Zinc Avanzado",
+      description: "Mineral quelado de última generación"
+    },
+    {
+      title: "Arginina Plus",
+      description: "Aminoácido optimizado de acción prolongada"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-gradient-to-b from-white to-orange-50">
+      <div className="container mx-auto px-4">
+        <h2 className="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-orange-800">
+          Componentes Premium
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {ingredientsData.map((ingredient, index) => (
+            <div 
+              key={index}
+              className="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300"
+            >
+              <h3 className="text-2xl font-bold mb-4 text-orange-600">{ingredient.title}</h3>
+              <p className="text-gray-600">{ingredient.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Reviews Component
+const Reviews = () => {
+  const reviews = [
+    {
+      name: "Dr. Miguel A.",
+      rating: 5.0,
+      text: "Una innovación excepcional en suplementos naturales. Los resultados son notables desde las primeras semanas."
+    },
+    {
+      name: "Laura B.",
+      rating: 4.9,
+      text: "La calidad premium se nota. Es exactamente lo que necesitaba para mantener mi ritmo de vida activo."
+    },
+    {
+      name: "Prof. Roberto C.",
+      rating: 5.0,
+      text: "La formulación más avanzada que he probado. Recomiendo totalmente este producto."
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        <h2 className="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-orange-800">
+          Experiencias de Éxito
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {reviews.map((review, index) => (
+            <div 
+              key={index} 
+              className="bg-gradient-to-b from-white to-orange-50 p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300"
+            >
+              <div className="flex items-center mb-6">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className={i < Math.floor(review.rating) ? "text-orange-500 fill-current" : "text-gray-300"}
+                    size={24}
+                  />
+                ))}
+                <span className="ml-3 text-lg text-gray-600">{review.rating}</span>
+              </div>
+              <p className="mb-6 text-gray-700">{review.text}</p>
+              <p className="font-bold text-orange-600">{review.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Order Form Component
 const OrderForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
   return (
-    <section id="orderForm" className="py-16 bg-orange-50">
+    <section id="orderForm" className="py-20 bg-gradient-to-b from-orange-50 to-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">¡Ordena Ahora!</h2>
+        <h2 className="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-orange-800">
+          ¡Comienza Tu Transformación!
+        </h2>
         <div className="max-w-md mx-auto">
-          <form onSubmit={handleSubmit} action="../../order.php" method="POST" className="bg-white p-8 rounded-lg shadow-md">
-            <div className="mb-6">
+          <form 
+            onSubmit={handleSubmit} 
+            action="../../order.php" 
+            method="POST" 
+            className="bg-white p-10 rounded-2xl shadow-2xl"
+          >
+            <div className="mb-8">
               <input
                 type="text"
-                className="name w-full px-4 py-2 border rounded-lg"
+                className="name w-full px-6 py-4 border-2 border-orange-200 rounded-xl focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-all"
                 name="name"
                 maxLength="30"
-                placeholder="Ingresa tu nombre"
+                placeholder="Tu nombre completo"
                 required
               />
             </div>
-            <div className="mb-6">
+            <div className="mb-8">
               <input
                 type="tel"
-                className="name w-full px-4 py-2 border rounded-lg"
+                className="name w-full px-6 py-4 border-2 border-orange-200 rounded-xl focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-all"
                 name="phone"
                 id="phoneNumber"
-                placeholder="Ingresa tu número de teléfono"
+                placeholder="Tu número de teléfono"
                 required
               />
             </div>
@@ -193,13 +277,14 @@ const OrderForm = () => {
 
             <button
               type="submit"
-              className="w-full bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-colors"
+              className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-xl text-xl font-bold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
             >
               Ordenar Ahora - $590 MXN
             </button>
             
-            <p className="text-xs text-gray-600 mt-4 text-center">
-              Este producto es un suplemento alimenticio y no está destinado a diagnosticar, tratar, curar o prevenir ninguna enfermedad. Consulte a su médico antes de consumir cualquier suplemento
+            <p className="text-sm text-gray-500 mt-6 text-center">
+              Este producto es un suplemento premium y está diseñado para complementar un estilo de vida saludable. 
+              Consulte a su profesional de la salud antes de comenzar cualquier régimen de suplementación.
             </p>
           </form>
         </div>
@@ -208,84 +293,58 @@ const OrderForm = () => {
   );
 };
 
-// Компонент Footer
+// Footer Component
 const Footer = () => {
   const [activeModal, setActiveModal] = useState(null);
 
-  const modalContent = {
-    privacy: {
-      title: "Política de Privacidad",
-      content: "Nuestra política de privacidad detalla cómo recopilamos, usamos y protegemos su información personal..."
-    },
-    terms: {
-      title: "Términos de Servicio",
-      content: "Al utilizar nuestro sitio web y productos, usted acepta cumplir con nuestros términos de servicio..."
-    },
-    returns: {
-      title: "Política de Devoluciones y Reembolsos",
-      content: "Aceptamos devoluciones dentro de los 30 días posteriores a la compra..."
-    },
-    shipping: {
-      title: "Información de Envío",
-      content: "Realizamos envíos a todo México. El tiempo de entrega estimado es de 3-5 días hábiles..."
-    },
-    cookies: {
-      title: "Política de Cookies",
-      content: "Utilizamos cookies para mejorar su experiencia de navegación..."
-    },
-    disclaimer: {
-      title: "Aviso Legal",
-      content: "Este producto es un dulce y no está destinado a diagnosticar, tratar, curar o prevenir ninguna enfermedad..."
-    },
-    contacts: {
-      title: "Contactos",
-      content: "Email: info@uroxel.netlify.app\nTeléfono: +52 5512345678\nDirección: Av. Insurgentes Sur 1234, Col. Del Valle, Ciudad de México, CP 03100"
-    },
-    about: {
-      title: "Sobre Nosotros",
-      content: "Somos una empresa dedicada a crear dulces naturales de alta calidad..."
-    }
-  };
+  const footerLinks = [
+    { id: 'privacy', title: 'Política de Privacidad', content: 'En Uroxel, protegemos su privacidad con los más altos estándares de seguridad digital...' },
+    { id: 'terms', title: 'Términos de Servicio', content: 'Al utilizar Uroxel, usted acepta nuestros términos de servicio profesional...' },
+    { id: 'returns', title: 'Garantía de Satisfacción', content: 'Ofrecemos una garantía de satisfacción de 30 días con devolución completa...' },
+    { id: 'shipping', title: 'Envío Premium', content: 'Envío express a todo México en 48-72 horas. Seguimiento en tiempo real disponible...' },
+    { id: 'cookies', title: 'Política de Cookies', content: 'Utilizamos tecnología avanzada de cookies para optimizar su experiencia...' },
+    { id: 'disclaimer', title: 'Información Legal', content: 'Uroxel es un suplemento premium diseñado para complementar un estilo de vida saludable...' },
+    { id: 'contacts', title: 'Centro de Atención', content: 'Email: soporte@uroxel.mx\nWhatsApp: +52 5512345678\nHorario: Lun-Vie 9:00-18:00' },
+    { id: 'about', title: 'Nuestra Misión', content: 'En Uroxel, nos dedicamos a la innovación en bienestar natural con tecnología de vanguardia...' }
+  ];
+
+  const activeModalData = footerLinks.find(link => link.id === activeModal);
 
   return (
-    <footer className="bg-gray-800 text-white py-8">
+    <footer className="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-12">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {Object.entries(modalContent).map(([key, { title }]) => (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {footerLinks.map((link) => (
             <button
-              key={key}
-              onClick={() => setActiveModal(key)}
-              className="text-left hover:text-orange-400 transition-colors"
+              key={link.id}
+              onClick={() => setActiveModal(link.id)}
+              className="text-left hover:text-orange-400 transition-colors duration-300"
             >
-              {title}
+              {link.title}
             </button>
           ))}
         </div>
         
-        <AlertDialog open={!!activeModal} onOpenChange={() => setActiveModal(null)}>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>{activeModal && modalContent[activeModal].title}</AlertDialogTitle>
-              <AlertDialogDescription className="whitespace-pre-line">
-                {activeModal && modalContent[activeModal].content}
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogAction onClick={() => setActiveModal(null)}>Cerrar</AlertDialogAction>
-          </AlertDialogContent>
-        </AlertDialog>
+        <Modal
+          isOpen={!!activeModal}
+          onClose={() => setActiveModal(null)}
+          title={activeModalData?.title}
+        >
+          {activeModalData?.content}
+        </Modal>
       </div>
     </footer>
   );
 };
 
-// Компонент CookieConsent
+// Cookie Consent Component
 const CookieConsent = () => {
   const [show, setShow] = useState(true);
 
   if (!show) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg p-4 z-50">
+    <div className="fixed bottom-0 left-0 right-0 bg-white shadow-xl p-6 z-40">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
         <p className="text-gray-700 mb-4 md:mb-0">
           Utilizamos cookies para mejorar su experiencia en nuestro sitio web.
@@ -293,13 +352,13 @@ const CookieConsent = () => {
         <div className="flex gap-4">
           <button
             onClick={() => setShow(false)}
-            className="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors"
+            className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-2 rounded-lg hover:shadow-lg transition-all duration-300"
           >
             Aceptar
           </button>
           <button
             onClick={() => setShow(false)}
-            className="bg-gray-200 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-300 transition-colors"
+            className="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-200 transition-colors"
           >
             Rechazar
           </button>
@@ -309,7 +368,7 @@ const CookieConsent = () => {
   );
 };
 
-// Главный компонент App
+// Main App Component
 const App = () => {
   return (
     <div className="min-h-screen">
