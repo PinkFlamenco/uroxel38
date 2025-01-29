@@ -7,7 +7,7 @@ const Modal = ({ isOpen, onClose, title, children }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-      <div className="bg-white rounded-2xl max-w-md w-full mx-4">
+      <div className="bg-white rounded-2xl max-w-2xl w-full mx-4">
         <div className="p-6">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-bold text-gray-900">{title}</h2>
@@ -57,7 +57,7 @@ const Hero = () => (
         <div className="relative">
           <div className="absolute -inset-1 bg-gradient-to-r from-orange-400 to-orange-600 rounded-lg blur opacity-30"></div>
           <img 
-            src="/product.png"
+            src="/product.png" 
             alt="Uroxel - Innovación Natural" 
             className="relative mx-auto max-w-sm rounded-lg shadow-2xl"
           />
@@ -88,17 +88,17 @@ const Benefits = () => {
     {
       icon: "🌿",
       title: "Tecnología Natural",
-      description: "Fórmula avanzada con ingredientes bioactivos de última generación"
+      description: "Fórmula avanzada con ingredientes bioactivos de última generación, desarrollada por expertos en bienestar natural"
     },
     {
       icon: "⚡",
       title: "Máximo Rendimiento",
-      description: "Potencia tu energía y vitalidad con nuestra fórmula exclusiva"
+      description: "Potencia tu energía y vitalidad con nuestra fórmula exclusiva, respaldada por estudios científicos"
     },
     {
       icon: "🎯",
       title: "Resultados Garantizados",
-      description: "Eficacia comprobada para tu bienestar diario"
+      description: "Eficacia comprobada para tu bienestar diario, con satisfacción garantizada o devolución de tu dinero"
     }
   ];
 
@@ -130,19 +130,19 @@ const Ingredients = () => {
   const ingredientsData = [
     {
       title: "Cúrcuma Elite",
-      description: "Potente antioxidante de máxima pureza"
+      description: "Potente antioxidante de máxima pureza, extraído mediante procesos avanzados para mantener sus propiedades intactas"
     },
     {
       title: "Jengibre Premium",
-      description: "Extracto concentrado de alta biodisponibilidad"
+      description: "Extracto concentrado de alta biodisponibilidad, cultivado en condiciones óptimas para maximizar sus beneficios"
     },
     {
       title: "Zinc Avanzado",
-      description: "Mineral quelado de última generación"
+      description: "Mineral quelado de última generación, con una absorción superior para mejores resultados"
     },
     {
       title: "Arginina Plus",
-      description: "Aminoácido optimizado de acción prolongada"
+      description: "Aminoácido optimizado de acción prolongada, formulado para una liberación gradual y efectiva"
     }
   ];
 
@@ -174,17 +174,17 @@ const Reviews = () => {
     {
       name: "Dr. Miguel A.",
       rating: 5.0,
-      text: "Una innovación excepcional en suplementos naturales. Los resultados son notables desde las primeras semanas."
+      text: "Una innovación excepcional en suplementos naturales. Los resultados son notables desde las primeras semanas. Mis pacientes reportan una mejoría significativa en su bienestar general."
     },
     {
       name: "Laura B.",
       rating: 4.9,
-      text: "La calidad premium se nota. Es exactamente lo que necesitaba para mantener mi ritmo de vida activo."
+      text: "La calidad premium se nota desde el primer momento. Es exactamente lo que necesitaba para mantener mi ritmo de vida activo. Los resultados superaron mis expectativas."
     },
     {
       name: "Prof. Roberto C.",
       rating: 5.0,
-      text: "La formulación más avanzada que he probado. Recomiendo totalmente este producto."
+      text: "La formulación más avanzada que he probado en mis años de investigación. Recomiendo totalmente este producto por sus beneficios comprobados y calidad excepcional."
     }
   ];
 
@@ -220,37 +220,99 @@ const Reviews = () => {
   );
 };
 
-// Modal Component
-const Modal = ({ isOpen, onClose, title, children }) => {
-  if (!isOpen) return null;
+// Order Form Component
+const OrderForm = () => {
+  const [showThankYouModal, setShowThankYouModal] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setShowThankYouModal(true);
+  };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-      <div className="bg-white rounded-2xl max-w-md w-full mx-4">
-        <div className="p-6">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-bold text-gray-900">{title}</h2>
+    <section id="orderForm" className="py-20 bg-gradient-to-b from-orange-50 to-white">
+      <div className="container mx-auto px-4">
+        <h2 className="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-orange-800">
+          ¡Comienza Tu Transformación!
+        </h2>
+        <div className="max-w-md mx-auto">
+          <form 
+            onSubmit={handleSubmit}
+            className="bg-white p-10 rounded-2xl shadow-2xl"
+          >
+            <div className="mb-8">
+              <input
+                type="text"
+                className="name w-full px-6 py-4 border-2 border-orange-200 rounded-xl focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-all"
+                name="name"
+                maxLength="30"
+                placeholder="Tu nombre completo"
+                required
+              />
+            </div>
+            <div className="mb-8">
+              <input
+                type="tel"
+                className="name w-full px-6 py-4 border-2 border-orange-200 rounded-xl focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-all"
+                name="phone"
+                id="phoneNumber"
+                placeholder="Tu número de teléfono"
+                required
+              />
+            </div>
+            
+            <input type="hidden" name="pp" value="everad" />
+            <input type="hidden" name="flow_id" value="1135205" />
+            <input type="hidden" name="offer_id" value="" />
+            <input type="hidden" name="geo" value="MX" />
+            <input type="hidden" name="price" value="590" />
+            <input type="hidden" name="sub1" value="{subid}" />
+            <input type="hidden" name="sub2" value="carti" />
+            <input type="hidden" name="sub3" value="{utm_campaign}" />
+            <input type="hidden" name="sub4" value="{utm_medium}" />
+            <input type="hidden" name="sub5" value="{utm_content}" />
+            <input type="hidden" name="pixel" value="{pixel}" />
+            <input type="hidden" name="gclid" value="{gclid}" />
+            <input type="hidden" name="gbraid" value="{gbraid}" />
+            <input type="hidden" name="wbraid" value="{wbraid}" />
+
             <button
-              onClick={onClose}
-              className="text-gray-500 hover:text-gray-700"
+              type="submit"
+              className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-xl text-xl font-bold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
             >
-              ✕
+              Ordenar Ahora - $590 MXN
             </button>
-          </div>
-          <div className="text-gray-600 whitespace-pre-line">
-            {children}
-          </div>
-          <div className="mt-6 flex justify-end">
-            <button
-              onClick={onClose}
-              className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300"
-            >
-              Cerrar
-            </button>
-          </div>
+            
+            <p className="text-sm text-gray-500 mt-6 text-center">
+              Este producto es un suplemento premium y está diseñado para complementar un estilo de vida saludable. 
+              Consulte a su profesional de la salud antes de comenzar cualquier régimen de suplementación.
+            </p>
+          </form>
         </div>
       </div>
-    </div>
+
+      <Modal
+        isOpen={showThankYouModal}
+        onClose={() => setShowThankYouModal(false)}
+        title="¡Gracias por tu pedido!"
+      >
+        ¡Felicidades por dar el primer paso hacia tu bienestar optimal!
+
+        Tu pedido de Uroxel ha sido recibido con éxito. Nuestro equipo está procesando tu orden con el máximo cuidado y atención a los detalles.
+
+        Qué sigue:
+        1. Recibirás un correo de confirmación en los próximos minutos
+        2. Un asesor personal se pondrá en contacto contigo en las próximas 24 horas
+        3. Tu pedido será enviado en un empaque discreto y seguro
+        4. Te proporcionaremos el número de seguimiento para que puedas rastrear tu envío
+
+        Si tienes alguna pregunta, no dudes en contactarnos:
+        Email: support@uroxelmax.netlify.app
+        WhatsApp: +52 (55) 1214-5671
+        
+        ¡Gracias por confiar en Uroxel para tu bienestar!
+      </Modal>
+    </section>
   );
 };
 
@@ -259,14 +321,276 @@ const Footer = () => {
   const [activeModal, setActiveModal] = useState(null);
 
   const footerLinks = [
-    { id: 'privacy', title: 'Política de Privacidad', content: 'En Uroxel, valoramos su privacidad y nos dedicamos a salvaguardarla. Esta política detalla la manera en que recopilamos y utilizamos su información personal. Información que recopilamos: Datos de contacto (nombre, número de teléfono, dirección de correo electrónico) Detalles de pedidos Información de navegación Sus datos están protegidos con nosotros y no serán compartidos con terceros sin su autorización. Si desea más información o tiene preguntas sobre nuestra política de privacidad, no dude en comunicarse con nosotros a través de info@uroxe.netlify.app'},
-    { id: 'terms', title: 'Términos de Servicio', content: 'Al acceder a nuestro sitio web y realizar compras, usted acepta los siguientes términos: Productos y Precios Todos los precios están expresados en Pesos Mexicanos (MXN). Nos reservamos el derecho de realizar modificaciones en los precios. Las imágenes de los productos son meramente ilustrativas. Pedidos La confirmación de un pedido no garantiza su disponibilidad. Nos reservamos el derecho de rechazar cualquier pedido. Los plazos de entrega son estimados y pueden variar. Uso del Sitio El contenido del sitio es propiedad de Uroxel. Queda prohibido el uso comercial del contenido sin nuestra autorización. Nos reservamos el derecho de realizar modificaciones en el sitio web.' },
-    { id: 'returns', title: 'Garantía de Satisfacción', content: 'Ofrecemos una garantía de satisfacción de 30 días con devolución completa...' },
-    { id: 'shipping', title: 'Envío Premium', content: 'Envío express a todo México en 48-72 horas. Seguimiento en tiempo real disponible...' },
-    { id: 'cookies', title: 'Política de Cookies', content: 'En nuestro sitio web, utilizamos cookies para optimizar su experiencia: Tipos de Cookies Cookies esenciales: Indispensables para el funcionamiento del sitio. Cookies de rendimiento: Utilizadas para analizar el uso del sitio. Cookies de preferencias: Sirven para recordar sus elecciones y configuraciones. Finalidad Mejorar la navegación en el sitio. Recordar sus preferencias y configuraciones. Realizar análisis sobre el uso del sitio web. Control de Cookies Tiene la opción de desactivar las cookies a través de la configuración de su navegador. Tenga en cuenta que algunas funcionalidades pueden verse afectadas. Las cookies esenciales no pueden ser desactivadas, ya que son necesarias para el funcionamiento básico del sitio.' },
-    { id: 'disclaimer', title: 'Información Legal', content: 'Uroxel es un suplemento premium diseñado para complementar un estilo de vida saludable...' },
-    { id: 'contacts', title: 'Centro de Atención', content: 'Email: support@uroxelmax.netlify.app\nWhatsApp: +52 1512345671\nHorario: Lun-Vie 9:00-18:00' },
-    { id: 'about', title: 'Nuestra Misión', content: 'En Uroxel, nos dedicamos a la innovación en bienestar natural con tecnología de vanguardia...' }
+    { 
+      id: 'privacy', 
+      title: 'Política de Privacidad', 
+      content: `Política de Privacidad de Uroxel
+
+En Uroxel, la privacidad y seguridad de nuestros usuarios son prioridades fundamentales. Esta política detalla cómo recopilamos, utilizamos y protegemos su información personal.
+
+1. Información que Recopilamos:
+- Datos de contacto (nombre, teléfono, correo electrónico)
+- Información de envío
+- Historial de pedidos
+- Preferencias de productos
+
+2. Uso de la Información:
+- Procesamiento de pedidos
+- Mejora de nuestros productos y servicios
+- Comunicación sobre su pedido
+- Atención al cliente personalizada
+
+3. Protección de Datos:
+- Utilizamos encriptación SSL de última generación
+- Acceso restringido a datos personales
+- Sistemas de seguridad actualizados regularmente
+
+4. Sus Derechos:
+- Acceso a sus datos personales
+- Corrección de información inexacta
+- Eliminación de sus datos
+- Limitación del procesamiento
+
+Para cualquier consulta sobre privacidad, contáctenos:
+Email: support@uroxelmax.netlify.app
+WhatsApp: +52 (55) 1234-5678`
+    },
+    { 
+      id: 'terms', 
+      title: 'Términos de Servicio', 
+      content: `Términos de Servicio de Uroxel
+
+1. Uso del Servicio
+Al utilizar nuestros servicios, usted acepta estos términos en su totalidad. Nuestros servicios están diseñados para adultos mayores de 18 años.
+
+2. Productos y Precios
+- Todos los productos están sujetos a disponibilidad
+- Los precios están en Pesos Mexicanos (MXN)
+- Nos reservamos el derecho de modificar precios
+- Todas las promociones tienen términos específicos
+
+3. Pedidos y Pagos
+- Los pedidos están sujetos a verificación
+- Aceptamos principales métodos de pago
+- La confirmación del pedido se enviará por email
+- Los pagos se procesan de forma segura
+
+4. Envíos
+- Entrega en 3-5 días hábiles
+- Seguimiento en tiempo real disponible
+- Envío gratuito en pedidos superiores a $1000 MXN
+
+5. Calidad y Garantía
+- Productos de alta calidad garantizada
+- Certificaciones sanitarias vigentes
+- Satisfacción garantizada
+
+6. Servicio al Cliente
+Email: support@uroxelmax.netlify.app
+WhatsApp: +52 (55) 1234-5678
+Horario: Lunes a Viernes 9:00-18:00`
+    },
+    { 
+      id: 'returns', 
+      title: 'Garantía de Satisfacción', 
+      content: `Garantía de Satisfacción Uroxel
+
+En Uroxel, estamos comprometidos con su satisfacción total. Nuestra garantía de 30 días le asegura una experiencia sin riesgos.
+
+Política de Devolución:
+1. Garantía de 30 días desde la recepción
+2. Devolución completa del dinero si no está satisfecho
+3. Sin preguntas ni condiciones complicadas
+
+Proceso de Devolución:
+1. Contáctenos dentro de los 30 días
+2. Proporcione su número de pedido
+3. Explique brevemente el motivo
+4. Reciba instrucciones de devolución
+5. Reembolso procesado en 3-5 días hábiles
+
+Condiciones:
+- Producto en condición original
+- Empaque original cuando sea posible
+- Incluir todos los componentes
+- Gastos de envío cubiertos por Uroxel
+
+Contacto para Devoluciones:
+Email: support@uroxelmax.netlify.app
+WhatsApp: +52 (55) 1234-5678`
+    },
+    { 
+      id: 'shipping', 
+      title: 'Envío Premium', 
+      content: `Servicio de Envío Premium Uroxel
+
+Ofrecemos el servicio de envío más confiable y rápido para su tranquilidad.
+
+Detalles del Servicio:
+1. Envío Express Nacional
+   - Entrega en 48-72 horas
+   - Cobertura en toda la República Mexicana
+   - Seguimiento en tiempo real
+
+2. Características Premium:
+   - Empaque discreto y seguro
+   - Protección contra daños
+   - Seguro de envío incluido
+   - Notificaciones de estado
+   
+3. Costos de Envío:
+   - Envío estándar: $99 MXN
+   - Envío express: $149 MXN
+   - Gratis en compras mayores a $1000 MXN
+
+4. Seguimiento de Pedido:
+   - Código de rastreo por email
+   - Actualizaciones por WhatsApp
+   - Soporte dedicado
+
+Para consultas sobre envíos:
+Email: support@uroxelmax.netlify.app
+WhatsApp: +52 (55) 1234-5678`
+    },
+    { 
+      id: 'cookies', 
+      title: 'Política de Cookies', 
+      content: `Política de Cookies de Uroxel
+
+Utilizamos cookies para mejorar su experiencia en nuestro sitio web.
+
+1. Tipos de Cookies que Utilizamos:
+- Cookies esenciales: Para el funcionamiento básico
+- Cookies de rendimiento: Para analizar el uso
+- Cookies de funcionalidad: Para recordar preferencias
+- Cookies de publicidad: Para contenido personalizado
+
+2. Gestión de Cookies:
+- Puede controlar las cookies en su navegador
+- Puede rechazar cookies no esenciales
+- La desactivación puede afectar la funcionalidad
+
+3. Uso de la Información:
+- Mejora de la navegación
+- Personalización de contenido
+- Análisis de uso
+- Optimización del sitio
+
+4. Protección de Datos:
+- Datos anónimos
+- No compartimos información personal
+- Cumplimiento con regulaciones
+
+Para más información:
+Email: support@uroxelmax.netlify.app
+WhatsApp: +52 (55) 1234-5678`
+    },
+    { 
+      id: 'disclaimer', 
+      title: 'Información Legal', 
+      content: `Información Legal de Uroxel
+
+Aviso Legal Importante:
+
+1. Naturaleza del Producto:
+- Uroxel es un suplemento alimenticio
+- No es un medicamento
+- No está destinado a diagnosticar, tratar, curar o prevenir enfermedades
+- Los resultados pueden variar entre individuos
+
+2. Recomendaciones de Uso:
+- Seguir las instrucciones del empaque
+- Consultar con profesional de salud
+- No exceder la dosis recomendada
+- Mantener fuera del alcance de niños
+
+3. Advertencias:
+- Solo para adultos mayores de 18 años
+- No usar durante embarazo o lactancia
+- Descontinuar uso si presenta reacciones adversas
+- Almacenar en lugar fresco y seco
+
+4. Certificaciones y Cumplimiento:
+- Registro sanitario vigente
+- Fabricación bajo normas GMP
+- Ingredientes de calidad premium
+- Análisis de calidad regulares
+
+Consultas adicionales:
+Email: support@uroxelmax.netlify.app
+WhatsApp: +52 (55) 1234-5678`
+    },
+    { 
+      id: 'contacts', 
+      title: 'Centro de Atención', 
+      content: `Centro de Atención al Cliente Uroxel
+
+Estamos aquí para ayudarte con cualquier consulta o asistencia que necesites.
+
+Información de Contacto:
+Email: support@uroxelmax.netlify.app
+WhatsApp: +52 (55) 1234-5678
+
+Horario de Atención:
+Lunes a Viernes: 9:00 - 18:00
+Sábados: 10:00 - 14:00
+Domingos: Cerrado
+
+Tipos de Asistencia:
+- Información de productos
+- Seguimiento de pedidos
+- Asesoría personalizada
+- Devoluciones y garantías
+- Soporte técnico
+- Consultas generales
+
+Tiempo de Respuesta:
+- Emails: 24 horas máximo
+- WhatsApp: 2-4 horas
+- Llamadas: Inmediato en horario laboral
+
+¡Tu satisfacción es nuestra prioridad!`
+    },
+    { 
+      id: 'about', 
+      title: 'Nuestra Misión', 
+      content: `Nuestra Misión en Uroxel
+
+En Uroxel, nos dedicamos a revolucionar el bienestar natural a través de la innovación y la excelencia.
+
+Nuestra Historia:
+Fundada por expertos en bienestar natural, Uroxel nació de la visión de crear productos que combinen la sabiduría tradicional con la ciencia moderna.
+
+Nuestros Valores:
+1. Calidad Sin Compromisos
+   - Ingredientes premium
+   - Procesos certificados
+   - Control de calidad riguroso
+
+2. Innovación Constante
+   - Investigación continua
+   - Tecnología de vanguardia
+   - Mejora constante
+
+3. Compromiso con el Cliente
+   - Atención personalizada
+   - Satisfacción garantizada
+   - Transparencia total
+
+4. Responsabilidad Social
+   - Prácticas sustentables
+   - Empaque eco-amigable
+   - Apoyo a la comunidad
+
+Nuestra Visión:
+Ser líderes en soluciones naturales para el bienestar, mejorando la calidad de vida de nuestros clientes a través de productos innovadores y efectivos.
+
+¡Únete a nuestra misión de bienestar!
+
+Contacto:
+Email: support@uroxelmax.netlify.app
+WhatsApp: +52 (55) 1234-5678`
+    }
   ];
 
   const activeModalData = footerLinks.find(link => link.id === activeModal);
@@ -298,7 +622,6 @@ const Footer = () => {
   );
 };
 
-// Cookie Consent Component
 const CookieConsent = () => {
   const [show, setShow] = useState(true);
 
@@ -329,7 +652,6 @@ const CookieConsent = () => {
   );
 };
 
-// Main App Component
 const App = () => {
   return (
     <div className="min-h-screen">
