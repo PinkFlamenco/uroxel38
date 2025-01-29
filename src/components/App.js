@@ -353,7 +353,7 @@ En Uroxel, la privacidad y seguridad de nuestros usuarios son prioridades fundam
 
 Para cualquier consulta sobre privacidad, contáctenos:
 Email: support@uroxelmax.netlify.app
-WhatsApp: +52 (55) 1234-5678`
+WhatsApp: +52 (55) 1214-5671`
     },
     { 
       id: 'terms', 
@@ -387,7 +387,7 @@ Al utilizar nuestros servicios, usted acepta estos términos en su totalidad. Nu
 
 6. Servicio al Cliente
 Email: support@uroxelmax.netlify.app
-WhatsApp: +52 (55) 1234-5678
+WhatsApp: +52 (55) 1214-5671
 Horario: Lunes a Viernes 9:00-18:00`
     },
     { 
@@ -417,7 +417,7 @@ Condiciones:
 
 Contacto para Devoluciones:
 Email: support@uroxelmax.netlify.app
-WhatsApp: +52 (55) 1234-5678`
+WhatsApp: +52 (55) 1214-5671`
     },
     { 
       id: 'shipping', 
@@ -450,7 +450,7 @@ Detalles del Servicio:
 
 Para consultas sobre envíos:
 Email: support@uroxelmax.netlify.app
-WhatsApp: +52 (55) 1234-5678`
+WhatsApp: +52 (55) 1214-5671`
     },
     { 
       id: 'cookies', 
@@ -483,7 +483,7 @@ Utilizamos cookies para mejorar su experiencia en nuestro sitio web.
 
 Para más información:
 Email: support@uroxelmax.netlify.app
-WhatsApp: +52 (55) 1234-5678`
+WhatsApp: +52 (55) 1214-5671`
     },
     { 
       id: 'disclaimer', 
@@ -518,7 +518,7 @@ Aviso Legal Importante:
 
 Consultas adicionales:
 Email: support@uroxelmax.netlify.app
-WhatsApp: +52 (55) 1234-5678`
+WhatsApp: +52 (55) 1214-5671`
     },
     { 
       id: 'contacts', 
@@ -529,7 +529,7 @@ Estamos aquí para ayudarte con cualquier consulta o asistencia que necesites.
 
 Información de Contacto:
 Email: support@uroxelmax.netlify.app
-WhatsApp: +52 (55) 1234-5678
+WhatsApp: +52 (55) 1214-5671
 
 Horario de Atención:
 Lunes a Viernes: 9:00 - 18:00
@@ -589,7 +589,7 @@ Ser líderes en soluciones naturales para el bienestar, mejorando la calidad de 
 
 Contacto:
 Email: support@uroxelmax.netlify.app
-WhatsApp: +52 (55) 1234-5678`
+WhatsApp: +52 (55) 1214-5671`
     }
   ];
 
