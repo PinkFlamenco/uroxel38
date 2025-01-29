@@ -220,76 +220,37 @@ const Reviews = () => {
   );
 };
 
-// Order Form Component
-const OrderForm = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+// Modal Component
+const Modal = ({ isOpen, onClose, title, children }) => {
+  if (!isOpen) return null;
 
   return (
-    <section id="orderForm" className="py-20 bg-gradient-to-b from-orange-50 to-white">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-orange-800">
-          ¡Comienza Tu Transformación!
-        </h2>
-        <div className="max-w-md mx-auto">
-          <form 
-            onSubmit={handleSubmit} 
-            action="../../order.php" 
-            method="POST" 
-            className="bg-white p-10 rounded-2xl shadow-2xl"
-          >
-            <div className="mb-8">
-              <input
-                type="text"
-                className="name w-full px-6 py-4 border-2 border-orange-200 rounded-xl focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-all"
-                name="name"
-                maxLength="30"
-                placeholder="Tu nombre completo"
-                required
-              />
-            </div>
-            <div className="mb-8">
-              <input
-                type="tel"
-                className="name w-full px-6 py-4 border-2 border-orange-200 rounded-xl focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-all"
-                name="phone"
-                id="phoneNumber"
-                placeholder="Tu número de teléfono"
-                required
-              />
-            </div>
-            
-            <input type="hidden" name="pp" value="everad" />
-            <input type="hidden" name="flow_id" value="1135205" />
-            <input type="hidden" name="offer_id" value="" />
-            <input type="hidden" name="geo" value="MX" />
-            <input type="hidden" name="price" value="590" />
-            <input type="hidden" name="sub1" value="{subid}" />
-            <input type="hidden" name="sub2" value="carti" />
-            <input type="hidden" name="sub3" value="{utm_campaign}" />
-            <input type="hidden" name="sub4" value="{utm_medium}" />
-            <input type="hidden" name="sub5" value="{utm_content}" />
-            <input type="hidden" name="pixel" value="{pixel}" />
-            <input type="hidden" name="gclid" value="{gclid}" />
-            <input type="hidden" name="gbraid" value="{gbraid}" />
-            <input type="hidden" name="wbraid" value="{wbraid}" />
-
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+      <div className="bg-white rounded-2xl max-w-md w-full mx-4">
+        <div className="p-6">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-xl font-bold text-gray-900">{title}</h2>
             <button
-              type="submit"
-              className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-xl text-xl font-bold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
+              onClick={onClose}
+              className="text-gray-500 hover:text-gray-700"
             >
-              Ordenar Ahora - $590 MXN
+              ✕
             </button>
-            
-            <p className="text-sm text-gray-500 mt-6 text-center">
-              Este producto es un suplemento premium y está diseñado para complementar un estilo de vida saludable. 
-              Consulte a su profesional de la salud antes de comenzar cualquier régimen de suplementación.
-            </p>
-          </form>
+          </div>
+          <div className="text-gray-600 whitespace-pre-line">
+            {children}
+          </div>
+          <div className="mt-6 flex justify-end">
+            <button
+              onClick={onClose}
+              className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300"
+            >
+              Cerrar
+            </button>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
