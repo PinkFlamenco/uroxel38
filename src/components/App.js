@@ -57,7 +57,7 @@ const Hero = () => (
         <div className="relative">
           <div className="absolute -inset-1 bg-gradient-to-r from-orange-400 to-orange-600 rounded-lg blur opacity-30"></div>
           <img 
-            src="../../product.png"
+            src="/product.png"
             alt="Uroxel - Innovación Natural" 
             className="relative mx-auto max-w-sm rounded-lg shadow-2xl"
           />
